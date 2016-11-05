@@ -1,0 +1,755 @@
+// BEGIN header
+.header
+   position: relative
+   &__inner
+      padding-bottom: 80px
+      position: fixed
+      top: 0
+      width: 100%
+      z-index: 200
+      background: url(../img/bg/header_white.png) no-repeat
+      background-position: 0 -70px
+      background-size: 3000px 364px
+      transition: all 0.5s
+      +r(767)
+         background: none
+         padding-bottom: 0
+         box-shadow: 0 0 3px 1px rgba(0,0,0,.25)
+   &__top
+      padding-top: 18px
+      transition: all 0.5s
+      +r(767)
+         padding-top: 5px
+   &__bot
+      margin-top: 25px
+      transition: all 0.5s
+      +r(767)
+         transition: all 0.5s
+         margin-top: 0
+   &__h1
+      +hide-text
+   &__logo
+      float: left
+      +r(767)
+         width: 150px
+         transition: all 0.5s
+      +r(479)
+         margin-top: 5px
+         width: 126px
+   &__top-col
+      float: right
+      +r(767)
+         display: flex
+         flex-direction: column-reverse
+   &__social
+      float: left
+      margin-right: 30px
+      +r(767)
+         display: none
+   &__lang
+      float: right
+      +r(767)
+         float: none
+         text-align: left
+         margin-top: 4px
+         margin-left: 7px
+   &__search
+      clear: both
+      float: right
+      margin-top: 40px
+      +r(767)
+         margin-top: 0
+.logo
+   display: block
+   width: 301px
+   &__img
+      display: block
+      max-width: 100%
+   &-white
+      width: 180px
+      &__img
+         display: block
+         max-width: 100%
+      +r(467)
+         display: inline-block
+
+.social
+   font-size: 0
+   &__link
+      display: inline-block
+      vertical-align: top
+      +trs
+      &--fb
+         +sr(fb)
+      &--gp
+         +sr(gp)
+      &--pin
+         +sr(pin)
+      &--tw
+         +sr(tw)
+      &--yt
+         +sr(yt)
+      & + &
+         margin-left: 12px
+      &:hover
+         opacity: .75
+
+.lang
+   font-size: 0
+   font-family: $default-fonts
+   &__link
+      display: inline-block
+      vertical-align: top
+      font-size: 18px
+      color: #008bd2
+      text-decoration: none
+      &.is-active
+         color: #e30413
+      & + &
+         margin-left: 18px
+      &:hover
+         text-decoration: underline
+
+.search
+   width: 182px
+   +r(374)
+      width: 150px
+   &__field
+      position: relative
+   &__input
+      width: 100%
+      height: 34px
+      padding: 0 45px 0 18px
+      border-radius: 5px
+      background-color: #f2f8fb
+      font-family: $default-fonts
+      font-size: 13px
+      line-height: 34px
+      font-style: italic
+      color: #008bd2
+      +placeholder
+         color: #1592d2
+   &__btn
+      position: absolute
+      top: 6px
+      right: 13px
+      +sr(search)
+      background-color: transparent
+
+.nav
+   padding: 6px
+   background-color: #1592d2
+   font-size: 0
+   border-radius: 5px
+   text-align: center
+   &__link
+      display: inline-block
+      vertical-align: top
+      position: relative
+      margin: 0 27px
+      font-size: 18px
+      color: #fff
+      text-decoration: none
+      +ALLS-Bold
+      +trs
+      & + &::before
+         content: ''
+         position: absolute
+         left: -27px
+         width: 3px
+         height: 100%
+         background-color: #0189ce
+         pointer-events: none
+         +r(1023)
+            left: -18px
+      &:hover
+         color: #e30413
+      +r(1023)
+         margin: 0 17px
+
+// nav toggle
+
+.hamburger
+   position: relative
+   z-index: 101
+   float: left
+   padding: 10px
+   pointer-events: auto
+   -webkit-tap-highlight-color: transparent
+   display: none
+   margin: 25px 15px 0 0
+   cursor: pointer
+   transition-property: opacity, -webkit-filter
+   transition-property: opacity, filter
+   transition-property: opacity, filter, -webkit-filter
+   transition-duration: 0.15s
+   transition-timing-function: linear
+   font: inherit
+   color: inherit
+   text-transform: none
+   background-color: transparent
+   border: 0
+   overflow: visible
+   transition: all 0.5s
+   +r(767)
+      display: block
+      position: absolute
+      right: 0
+      top: 11px
+   &__box
+      width: 23px
+      height: 16px
+      display: block
+      position: relative
+   &__inner
+      display: block
+      top: 50%
+      margin-top: -1px
+      width: 23px
+      height: 2px
+      background-color: #1592d2
+      position: absolute
+      transition-property: -webkit-transform
+      transition-property: transform
+      transition-property: transform, -webkit-transform
+      transition-duration: 0.15s
+      transition-timing-function: ease
+      +r(1023)
+         background-color: #1592d2
+      &::before, &::after
+         width: 23px
+         height: 2px
+         background-color: #1592d2
+         position: absolute
+         transition-property: -webkit-transform
+         transition-property: transform
+         transition-property: transform, -webkit-transform
+         transition-duration: 0.15s
+         transition-timing-function: ease
+         +r(1023)
+            background-color: #1592d2
+      &::before, &::after
+         content: ""
+         display: block
+      &::before
+         top: -7px
+      &::after
+         bottom: -7px
+   &.is-active &__inner
+      background-color: #1592d2
+   &.is-active &__inner:before,
+   &.is-active &__inner:after
+      background-color: #1592d2
+   &_spin &__inner
+      transition-duration: 0.3s
+      transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19)
+      &::before
+         transition: top 0.1s 0.34s ease-in, opacity 0.1s ease-in
+      &::after
+         transition: bottom 0.1s 0.34s ease-in, -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+         transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+         transition: bottom 0.1s 0.34s ease-in, transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19), -webkit-transform 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19)
+   &.is-active &__inner
+      -webkit-transform: rotate(225deg)
+      transform: rotate(225deg)
+      transition-delay: 0.14s
+      transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1)
+      &::before
+         top: 0
+         opacity: 0
+         transition: top 0.1s ease-out, opacity 0.1s 0.14s ease-out
+      &::after
+         bottom: 0
+         -webkit-transform: rotate(-90deg)
+         transform: rotate(-90deg)
+         transition: bottom 0.1s ease-out, -webkit-transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1)
+         transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1)
+         transition: bottom 0.1s ease-out, transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 0.3s 0.14s cubic-bezier(0.215, 0.61, 0.355, 1)
+
+// END header
+
+.main
+   padding-bottom: 430px
+   position: relative
+   background: #abdcf6
+   background-image: linear-gradient(180deg, #fff 0%, #fff 28%, #f4fafe 33%, #90cff3 95%, #85caf2 97.5%, #85caf2 100%)
+   +r(1439)
+      padding-bottom: 300px
+   +r(767)
+      padding-bottom: 200px
+   +r(535)
+      padding-bottom: 100px
+   &::after
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      height: 550px
+      content: ''
+      background: url(../img/bg/main-bot_bg.png)
+      background-repeat: no-repeat
+      background-position: 50% 45%
+      background-size: cover
+      z-index: 100
+      +r(1439)
+         height: 360px
+      +r(767)
+         height: 240px
+      +r(535)
+         height: 140px
+
+// BEGIN screen
+.screen
+   padding-top: 160px
+   +r(767)
+      padding-top: 70px
+   &__slider
+      .slick-dots
+         bottom: 50px
+         li
+            padding: 0 10px
+            &.slick-active button
+               background-color: #29b8f1
+         button
+            box-shadow: none
+   &__item
+      position: relative
+      z-index: 100
+      background: url(../img/bg/slider_pic-1.jpg) no-repeat
+      background-size: cover
+      background-position: 50% 50%
+      min-height: 435px
+      +r(767)
+         background-position: 66% 50%
+      &:nth-child(1) ~ &
+         display: none
+   .slick-initialized
+      .screen__item
+         display: block
+   &__text
+      font-size: 74px
+      line-height: 0.74
+      color: #fff
+      +ALLS-Bold
+      z-index: 100
+      &--size
+         font-size: 30px
+         letter-spacing: 0.03em
+         +ALSS-Regular
+      +r(767)
+         font-size: 50px
+   &__btn
+      display: inline-block
+      margin-top: 20px
+   &__col
+      width: 41%
+      float: right
+      margin: 85px 50px 0 0
+      +r(767)
+         margin: 150px auto 0
+         width: auto
+         max-width: 320px
+         float: none
+         text-align: center
+
+// END screen
+
+// BEGIN assortment
+
+.assortment
+   padding-top: 30px
+   &__inner
+      margin-top: 50px
+      padding: 0 50px 0
+      background: url(../img/bg/assortment-sld_bg.png) no-repeat
+      background-position: center bottom -40px
+      padding-bottom: 40px
+   &__slider
+      .slick-track
+         display: table
+      .slick-slide
+         display: table-cell
+         vertical-align: bottom
+         float: none
+         img
+            max-width: none
+            margin: 0 auto
+            +r(1023)
+               max-width: 100%
+      .slick-prev::before,
+      .slick-next::before
+         content: ''
+         background: transparent
+      .slick-prev::before
+         +sr(assortment-left)
+      .slick-next::before
+         +sr(assortment-right)
+      .slick-prev
+         left: -50px
+      .slick-next
+         right: -50px
+      .slick-prev,
+      .slick-next
+         top: 45%
+         height: 48px
+         +trs
+         opacity: .6
+         &:hover
+            opacity: 1
+         &:active
+            transform: scale(.9)
+   &__descr
+      max-width: 830px
+      margin: 30px auto 0
+      text-align: center
+      letter-spacing: 0.03em
+      color: #242424
+
+// END assortment
+
+// BEGIN components
+
+.components
+   padding-top: 65px
+   &__title
+      margin-bottom: 20px
+      line-height: 0.98
+   &__block
+      position: relative
+      min-height: 595px
+      +r(1023)
+         font-size: 0
+         min-height: auto
+         text-align: center
+   &__img
+      max-width: 100%
+      +r(1023)
+         display: none
+   &__item
+      position: absolute
+      font-size: 25px
+      color: #60c0e7
+      line-height: 0.96
+      +ALLS-Bold
+      &:nth-of-type(1)
+         width: 155px
+         top: 120px
+         left: 330px
+         &::before
+            background: url(../img/content/cow.svg) no-repeat
+            width: 210px
+      &:nth-of-type(2)
+         width: 250px
+         top: 105px
+         left: 530px
+         &::before
+            background: url(../img/content/field.svg) no-repeat
+            width: 210px
+            background-size: 200%
+            background-position: 50% 50%
+      &:nth-of-type(3)
+         width: 160px
+         top: 285px
+         left: 100px
+         color: #fff
+         &::before
+            background: url(../img/content/farmer.svg) no-repeat, url(../img/content/food.svg) no-repeat right center
+            width: 210px
+      &:nth-of-type(4)
+         width: 160px
+         top: 320px
+         left: 410px
+         color: #fff
+         &::before
+            background: url(../img/content/gear.svg) no-repeat, url(../img/content/herb.svg) no-repeat 100% 10%/80px 60px
+            width: 210px
+      +r(1023)
+         position: static
+         display: inline-block
+         vertical-align: top
+         padding: 20px 15px 0
+         width: 50%!important
+         color: #60c0e7!important
+         text-align: center
+         &::before
+            content: ''
+            display: block
+            margin: 0 auto 10px
+            height: 150px
+      +r(767)
+         width: 75%!important
+      +r(539)
+         width: 100%!important
+
+
+// END components
+
+// BEGIN about
+.about
+   position: relative
+   margin-top: 60px
+   z-index: 200
+   &__title
+      margin-bottom: 60px
+   &__col
+      float: left
+      width: 45.4%
+      +r(1023)
+         width: auto
+         max-width: 480px
+         float: none
+         margin: 0 auto
+      &:nth-of-type(2)
+         width: 54.6%
+         +r(1023)
+            width: auto
+            max-width: 530px
+      &:nth-of-type(2) .about__pic
+         width: 210px
+         +r(1023)
+            width: 40%
+         +r(544)
+            width: 70%
+      &:nth-of-type(2) .about__number-wrapp
+         width: auto
+      &:nth-of-type(2) .about__descr
+         width: 212px
+         padding-left: 20px
+         +r(1023)
+            width: 30%
+            padding-left: 0
+         +r(544)
+            width: 80%
+      &:nth-of-type(2) :nth-child(3).about__item
+         padding-top: 20px
+         +r(1023)
+            padding-top: 0
+      &:nth-of-type(2) :nth-child(3) .about__descr
+         width: 165px
+         +r(1023)
+            width: 30%
+         +r(544)
+            width: 80%
+      &:nth-of-type(2) :nth-child(1) .about__number-wrapp
+         width: 102px
+         +r(1023)
+            width: 30%
+      &:nth-of-type(2) :nth-child(2) .about__number-wrapp
+         width: 75px
+         +r(1023)
+            width: 30%
+      &:nth-of-type(2) :nth-child(3) .about__number-wrapp
+         width: 145px
+         +r(1023)
+            width: 30%
+         +r(544)
+            width: auto
+   &__item
+      margin-bottom: 20px
+      color: #1ba4db
+      font-size: 0
+      +ALLS-Bold
+   &__pic
+      width: 158px
+      display: inline-block
+      vertical-align: middle
+      +r(1023)
+         width: 40%
+      +r(544)
+         display: block
+         margin: 0 auto
+         width: 70%
+   &__img
+      max-width: 100%
+      height: auto
+      +r(544)
+         display: block
+         margin: 0 auto
+   &__descr
+      display: inline-block
+      vertical-align: middle
+      padding-left: 10px
+      font-size: 34px
+      line-height: 0.9
+      width: 180px
+      +r(1023)
+         width: 30%
+         padding-left: 0
+      +r(544)
+         display: block
+         width: 80%
+         margin: 0 auto
+         text-align: center
+   &__number-wrapp
+      width: 95px
+      display: inline-block
+      vertical-align: middle
+      text-align: center
+      +r(1023)
+         width: 30%
+      +r(544)
+         display: block
+         margin: 20px auto 0
+   &__number
+      font-size: 68px
+      line-height: 0.83
+   &__unit
+      font-size: 26px
+      line-height: 0.88
+
+
+// END about
+
+.footer
+   padding: 18px 0 25px
+   background-color: #1592d2
+   +r(467)
+      text-align: center
+   &__col
+      float: left
+      &:nth-of-type(1)
+         padding: 10px 0 0 11.275%
+         +r(767)
+            padding: 0 25px
+         +r(467)
+            float: none
+      &:nth-of-type(2)
+         padding: 0 0 0 6.875%
+         +r(767)
+            display: none
+      &:nth-of-type(3)
+         padding: 0 0 0 10.775%
+         +r(767)
+            float: right
+            padding: 0 25px
+         +r(467)
+            margin-top: 10px
+            float: none
+   &__title
+      margin-bottom: 20px
+      font-size: 22px
+      color: #fff
+      +ALLS-Bold
+      +r(467)
+         margin-bottom: 5px
+   &__nav
+      font-size: 17px
+      text-align: left
+      padding: 0
+      background-color: transparent
+      .nav__link
+         display: block
+         margin: 0 0 10px
+         +ALSS-Regular
+         &::before
+            display: none
+   &__social
+      .social__link--fb
+         +sr(fb-white)
+      .social__link--gp
+         +sr(gp-white)
+      .social__link--pin
+         +sr(pin-white)
+      .social__link--tw
+         +sr(tw-white)
+      .social__link--yt
+         +sr(yt-white)
+      .social__link
+         margin-left: 6px
+         &:first-child
+            margin-left: 0
+
+
+/* ===================================
+	 Fixed Header
+	 =================================== */
+.header__inner
+   position: fixed
+   top: 0
+   left: 0
+   right: 0
+   z-index: 1000
+   transform: translate3d(0,0,0)
+   transition: all 0.5s
+
+@media screen and (min-width: 768px)
+   .header__inner.is-fixed
+      transition: all 0.5s
+      padding-bottom: 0
+      background-image: none
+      background-color: #ffffff
+      box-shadow: 0 0 4px rgba(0,0,0,.5)
+      .header__top
+         padding-top: 5px
+         max-height: 135px
+         overflow: hidden
+         &-col
+            padding-top: 13px
+            width: calc(100% - 200px)
+            float: right
+            text-align: right
+      .header__nav
+         margin-left: -15px
+         margin-right: -15px
+         border-radius: 0
+      .header__bot
+         margin-top: 5px
+         max-width: none
+         transition: all 0.5s
+      .header__search
+         margin-top: 0
+         float: none
+         display: inline-block
+         vertical-align: middle
+      .header__social
+         float: none
+         display: inline-block
+         vertical-align: middle
+      .header__lang
+         float: none
+         display: inline-block
+         vertical-align: middle
+      .logo
+         width: 150px
+
++r(767)
+   .header__top
+      position: relative
+      z-index: 1000
+      background-color: #ffffff
+      box-shadow: 0 0 3px 1px rgba(0,0,0,.3)
+   .header__inner
+      background-color: #ffffff
+   .header__nav
+      overflow: hidden
+      position: fixed
+      z-index: 99
+      top: 100%
+      left: 0
+      right: 0
+      margin-left: auto
+      margin-right: auto
+      border-radius: 0
+      opacity: 0
+      background-color: rgba(255, 255, 255, .96)
+      border-bottom: 2px solid #1592d2
+      box-shadow: 0 0 3px #1592d2
+      transform: translateY(-100%)
+      transition: all 0.5s
+      &.is-active
+         opacity: 1
+         padding-left: 0
+         padding-right: 0
+         transform: translateY(0)
+      .nav__link
+         display: block
+         width: 100%
+         padding: 0
+         margin: 0
+         color: #1592d2
+         line-height: 1.5
+         border: none
+         border-top: 1px solid rgba(21, 146, 210, .06)
+         &:before
+            content: none
+            display: none

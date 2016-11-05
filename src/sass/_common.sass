@@ -1,0 +1,53 @@
+// fonts
++font(ALSS-Regular, ALSSchlangesans)
++font(ALSS-Light, ALSSchlangesans-Light)
++font(ALSS-Bold, ALSSchlangesans-Bold)
+
+=ALSS-Regular
+	font-family: 'ALSS-Regular', $default-fonts
+=ALLS-Light
+	font-family: 'ALSS-Light', $default-fonts
+=ALLS-Bold
+	font-family: 'ALSS-Bold', $default-fonts
+
+$default-fonts: Arial, sans-serif
+
+// transition
+=trs
+	transition: .4s ease
+
+// common blocks
+
+body
+	font-size: 19px
+	line-height: 1.32
+	font-family: 'ALSS-Regular', $default-fonts
+	min-width: 320px
+
+h2
+	font-size: 43px
+	color: #00a9ec
+	text-align: center
+	+ALLS-Bold
+	line-height: 0.83
+
+.container
+	max-width: 990px
+	margin: 0 auto
+	padding: 0 15px
+	+clr
+
+.btn
+	font-size: 16px
+	padding: 8px 25px
+	background-color: #e30413
+	border-radius: 5px
+	color: #fff
+	line-height: 1
+	text-decoration: none
+	outline: none
+	cursor: pointer
+	+ALLS-Bold
+	+trs
+	&:hover
+		background-color: darken(#e30413, 7)
